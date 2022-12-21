@@ -5,3 +5,10 @@ Author
 Ehoneah Obed <ehoneahobed@hotmail.com>
   
   [Twitter](https://ehoneahobed.com/twitter)
+
+
+## Screenshot of first one
+  ![screenshot of main](./images/currency%20converter%20app%20screenshot%20-main.png)
+
+## Screenshot of second one
+  ![screenshot of main](./images/currency%20converter%20app%20screenshot.png)
