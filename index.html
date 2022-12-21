@@ -1,29 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Currency Converter</title>
   <link rel="stylesheet" href="./styles.css">
+  <style>
+    /* Add your CSS styles here */
+  </style>
 </head>
-
 <body>
-    <h1>Currency Converter</h1>
-    <form>
-      <label for="amount">Amount:</label><br>
-      <input type="text" id="amount" name="amount"><br>
-      <label for="from">From:</label><br>
-      <select id="from" name="from"></select><br>
-      <label for="to">To:</label><br>
-      <select id="to" name="to"></select><br><br>
-      <input type="submit" value="Convert">
-    
-      <div id="result">
-        <p>Converted Amount: <span id="convertedAmount"></span></p>
-      </div>
-    </form> 
-  
-    <div class="copyright"> This is a sample project by <span><a href="https://ehoneahobed.com/twitter">Ehoneah Obed</a> </span></div>
-    <script src="./main.js"></script>
-</body>
-    
+  <h1>Currency Converter</h1>
+  <form>
+    <label for="amount">Amount:</label><br>
+    <input type="text" id="amount" name="amount"><br>
+    <label for="from">From:</label><br>
+    <select id="from" name="from"></select><br>
+    <label for="to">To:</label><br>
+    <select id="to" name="to"></select><br><br>
+    <input type="submit" value="Convert">
+  </form> 
+  <div id="result">
+    <p>Converted Amount: <span id="convertedAmount"></span></p>
+  </div>
 
+  
+  <div class="copyright"> This is a sample project by <span><a href="https://ehoneahobed.com/twitter">Ehoneah Obed</a> </span></div>
+
+  <script>
+    // Get the from and to select elements
+    const fromSelect = document.querySelector('#from');
+    const toSelect = document.querySelector('#to');
+
+    // Make an API call to get the list of currencies
+    fetch('https://api.exchangerate.host/symbols')
+      .then((response) => {
+        // Convert the response to JSON
+        return response.json();
+      })
+      .then((data) => {
+        // Get the list of currency codes
+        const currencies = data.symbols;
+        // Create an option element for each currency code
+        for (const code in currencies) {
+          const option = document.createElement('option');
+        //   console.log(code)
+          option.value = code;
+          option.textContent = code;
+          // Add the option element to the from and to select elements
+          fromSelect.appendChild(option.cloneNode(true));
+          toSelect.appendChild(option.cloneNode(true));
+        }
+      })
+      .catch((error) => {
+        // Handle any errors that may occur
+        console.error(error);
+      });
+
+    // Get the form element
+    const form = document.querySelector('form');
+
+    // Add an event listener for the submit event
+    form.addEventListener('submit', (event) => {
+      // Prevent the default action of the form submission
+      event.preventDefault();
+
+      // Perform the currency conversion and update the page
+      convertCurrency();
+    });
+
+    function convertCurrency() {
+      // Get the amount, from, and to values from the form
+      const amount = document.querySelector('#amount').value;
+      const from = document.querySelector('#from').value;
+      const to = document.querySelector('#to').value;
+
+      // Make an API call to convert the currency
+      fetch(`https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`)
+        .then((response) => {
+          // Convert the response to JSON
+          return response.json();
+        }).then((data) => {
+// Check if the conversion was successful
+if (data.success) {
+// Update the converted amount
+const convertedAmount = data.result;
+document.querySelector('#convertedAmount').textContent = convertedAmount;
+} else {
+// Display an error message
+alert(data.error);
+}
+})
+.catch((error) => {
+// Handle any errors that may occur
+console.error(error);
+});
+}
+</script>
+
+</body>
 </html>
+
