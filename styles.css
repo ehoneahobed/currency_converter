@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #00b8d4;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #fff;
+  }
+  
+  form {
+    width: 500px;
+    height: 600px;
+    margin: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  input[type="text"] {
+    width: 50%;
+    height: 30px;
+    padding: 0 10px;
+    font-size: 18px;
+  }
+  
+  select {
+    width: 50%;
+    height: 30px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+  
+  select::-ms-expand {
+    display: none;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #006699;
+    box-shadow: inset 0 1px 3px rgba(0,102,153,0.1);
+  }
+  
+  
+  input[type="submit"] {
+    width: 20%;
+    height: 40px;
+    font-size: 18px;
+    background-color: #006699;
+    color: white;
+  }
+  
+  #result {
+    width: 500px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 18px;
+    color: #006699;
+  }
+  
+  input[type="text"] {
+    width: 50%;
+    height: 30px;
+    padding: 0 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  input[type="submit"], button {
+    width: 20%;
+    height: 40px;
+    font-size: 18px;
+    background-color: #006699;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .copyright {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .copyright span a {
+    color: yellow;
+  }
+  
+
+  @media (max-width: 600px) {
+    form {
+      width: 90%;
+    }
+  
+    label {
+      font-size: 14px;
+    }
+  
+    input[type="text"] {
+      width: 100%;
+      font-size: 14px;
+    }
+  
+    select {
+      width: 100%;
+      font-size: 14px;
+    }
+  
+    input[type="submit"] {
+      width: 40%;
+      font-size: 14px;
+    }
+  }
+  
